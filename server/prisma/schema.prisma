@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://admin:admin@localhost:5432"
+}
+
+
+model Cadastro_de_usuarios{
+  id Int @id @default(autoincrement())
+  Nome String
+  Email String @unique
+  Senha String
+  Tipo  String
+}
+
+model entregas{
+  id Int @id @default(autoincrement())
+  Entregador String
+  Cliente String
+  Valor String
+  Descricao String
+  Local_Retirada String
+  Local_Entrega String
+  Data_Criacao String
+  Data_Hora_Retirada String
+  Data_Hora_Entrega String
+  Status  String
+
+}
+
+model Transacoes_Debito_cliente{
+  id Int @id @default(autoincrement())
+  Data_Transaco String
+  Usuario String
+  Valor String
+}
+
+model Transacoes_Credito_Entregadore{
+  id Int @id @default(autoincrement())
+  Data_Transaco String
+  Usuario String
+  Valor String
+}

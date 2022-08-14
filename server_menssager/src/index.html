@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>chat Delivery</title>
+    <style>
+        body {
+            margin: 2px;
+            padding-bottom: 3rem;
+            font-family: -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+        }
+
+        #form {
+            background: #e0caca;
+            padding: 0.10rem;
+            position: fixed;
+            bottom: 4%;
+            width: 90%;
+            margin: 40px;
+            display: flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+            border: 4px black;
+            box-shadow: 3px 3px 6px #0000009F;
+        }
+
+        #input {
+            border: none;
+            padding: 1rem;
+            flex-grow: 1;
+            border-radius: 10px;
+            margin: 0.25rem;
+            box-shadow: 1px 1px 4px #0000009F inset;
+        }
+
+        #input:focus {
+            outline: none;
+        }
+
+        #user {
+            border: none;
+            padding: 15px 10px;
+            border-radius: 10px;
+            margin: 0.25rem;
+            box-shadow: 1px 1px 4px #3838389f inset;
+        }
+
+        #app {
+            width: 10%;
+            margin: 0 auto;
+        }
+
+        .center {
+            color: #e0caca;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+
+        #form>button {
+            background: #7a4646;
+            border: none;
+            border-radius: 50px;
+            padding: 8px 35px;
+            margin: 0.25rem;
+            border-radius: 20px;
+            outline: none;
+            color: rgb(245, 245, 245);
+            box-shadow: 5px 5px 4px #0000009F;
+        }
+
+        #form>button:active {
+            background: #442525;
+        }
+
+        #messages {
+            list-style-type: none;
+            border: 5px #7a4646;
+            margin-top: 80px;
+            margin-left: 140px;
+            margin-right: 140px;
+            padding: 0;
+        }
+
+        #messages>li {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: #ebeaea;
+            margin: 2px;
+            box-shadow: 1px 1px 4px #3535359f;
+
+        }
+
+        #messages>li:nth-child(odd) {
+            background: #afafaf;
+        }
+
+        .texto_conteiner {
+            background: #7a4646;
+            ;
+            border-radius: 10px;
+            margin: 20px;
+            height: 3rem;
+            box-shadow: 3px 3px 6px #0000009F;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="app">
+        <div class="texto_conteiner">
+            <h1 class="center">Chat Delivery</h1>
+        </div>
+
+        <div id="chatContainer"></div>
+
+        <div>
+            <div class="conteiner">
+                <ul id="messages"></ul>
+            </div>
+
+            <form id="form" action="">
+                <input id="user" autocomplete="on" required placeholder="  User Nome" />
+                <input id="input" autocomplete="on" />
+                <button>Enviar</button>
+            </form>
+            <script src="/socket.io/socket.io.js"></script>
+
+            <script>
+                var socket = io();
+
+                var messages = document.getElementById('messages');
+                var form = document.getElementById('form');
+                var input = document.getElementById('input');
+
+                var user = document.getElementById('user');
+
+                socket.emit('chat message', "Bem vindo!");
+
+
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    if (input.value) {
+                        if (user.value) {
+
+                            socket.emit('chat message', " User " + user.value + " > " + input.value)
+                            input.value = '';
+                        }
+                        socket.emit('chat message', input.value);
+                        input.value = '';
+                    }
+                });
+
+                socket.on('chat message', function (msg) {
+                    var item = document.createElement('li');
+                    item.textContent = msg;
+                    messages.appendChild(item);
+                    window.scrollTo(0, document.body.scrollHeight);
+                });
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

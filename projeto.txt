@@ -1,0 +1,29 @@
+Projeto Delivery
+Cadastro de usuários
+- Nome
+- Email
+- Senha
+- Tipo =>  [Entregador, Cliente]
+
+Entregas
+- Entregador
+- Cliente
+- Valor
+- Descrição
+- Local Retirada
+- Local Entrega
+- Data Criação
+- Data Hora Retirada
+- Data Hora Entrega
+- Status => [0 = Solicitado,
+	     1 = Em Andamento,
+	     2 = Concluído,
+	     3 = Cancelado ]
+
+Transações => Essa tabela é alimentada quando concluí a entrega (Débito cliente,
+								 Crédito Entregador)
+- Data
+- Usuário
+- Valor
+
+Messageria entre entregador e cliente usando socket.io 

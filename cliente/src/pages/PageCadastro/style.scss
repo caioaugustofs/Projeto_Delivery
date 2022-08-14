@@ -1,0 +1,94 @@
+.App--conteiner {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.cadastro--conteiner{
+    align-items: center;
+    margin-top: 25px;
+    padding: 45px 55px;
+    
+    background-color: #e0caca;
+    box-shadow: 4px 8px 8px #0000009F;
+    border-radius: 5px;
+
+}
+
+.cadastro--title{
+    text-align: center;
+    font-size: 40px;
+    color: #7a4646;
+    margin: 15px;
+}
+
+
+.conteiner--input{
+    display: block;
+    font-size: 15px;
+    align-content: lefth;
+    width: 250px;
+    height: 28px;
+    margin: 1px;
+    padding: 5px 5px;
+    color: black;
+
+    &:active {
+        background-color: #c1dbe6;
+        box-shadow: 2px 2px 4px #0000009F inset;
+      }
+}
+
+.conteiner--dropdown{
+    display: block;
+    font-size: 15px;
+    align-content: lefth;
+    width: 264px;
+    height: 35px;
+    margin-top: 15px;
+    padding: 5px 5px;
+    color: black;
+
+    &:active {
+        background-color: #c1dbe6;
+        box-shadow: 2px 2px 4px #0000009F inset;
+      }
+}
+    
+.botao {
+    display: block;
+    align-self: center;
+    background-color: #7a4646;
+    font-size: 25px;
+    border-radius: 5px;
+    padding: 16px 55px;
+    box-shadow: 2px 4px 4px #0000009F;
+    margin-top: 25px;
+
+    &:active {
+        background-color: #442525;
+        ;
+        box-shadow: 2px 2px 4px #0000009F inset;
+    }
+}
+
+
+
+
+.Menulink {
+    display: inline-block;
+    font-size: 25px;
+    text-decoration: none;
+    color: #e0caca;
+
+    &:active {
+        background-color: #442525;
+        box-shadow: 2px 2px 4px #0000009F inset;
+    }
+
+}
+
+.menu-ul{
+    display: flex;
+}
